@@ -1,0 +1,10 @@
+---
+- name: Subscribe to RHN channels!
+  when: rhn_repositories_enabled is defined
+  shell: subscription-manager repos --enable {{ rhn_repositories_enabled | join(" --enable ") }}
+
+
+- name: Unsubscribe to RHN channels!
+  when: rhn_repositories_disabled is defined
+  shell: subscription-manager repos --disable {{ rhn_repositories_disabled | join(" --disable ") }}
+  ignore_errors: True
