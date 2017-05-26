@@ -40,11 +40,11 @@ Usage:
 		roles:
 			- rhn-subscribe
 
-
 License
 -------
 
-BSD
+Apache 2.0
+
 
 Author Information
 ------------------
