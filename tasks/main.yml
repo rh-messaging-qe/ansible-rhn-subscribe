@@ -12,6 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 ---
+- name: Load variables
+  when: rhn_repositories_enabled is not defined and ansible_distribution == 'RedHat'
+  include_vars:
+    file: vars/repositories_rhel_{{ ansible_distribution_major_version }}_{{ ansible_architecture }}.yml
+
 - name: Subscribe to RHN channels!
   when: rhn_repositories_enabled is defined and ansible_distribution == 'RedHat'
   shell: subscription-manager repos --enable {{ rhn_repositories_enabled | join(" --enable ") }}
