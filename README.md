@@ -38,7 +38,7 @@ Usage:
 	      - 'rhel-{{ ansible_distribution_major_version }}-server-tus-rpms'
 		remote_user: root
 		roles:
-			- rhn-subscribe
+			- ansible-rhn-subscribe
 
 License
 -------
@@ -49,4 +49,4 @@ Apache 2.0
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Messaging QE team @ RedHat

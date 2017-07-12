@@ -22,4 +22,4 @@
       - 'rhel-{{ ansible_distribution_major_version }}-server-tus-rpms'
   remote_user: root
   roles:
-    - rhn-subscribe
+    - ansible-rhn-subscribe
