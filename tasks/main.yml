@@ -17,12 +17,11 @@
   include_vars:
     file: vars/repositories_rhel_{{ ansible_distribution_major_version }}_{{ ansible_architecture }}.yml
 
-- name: Subscribe to RHN channels!
-  when: rhn_repositories_enabled is defined and ansible_distribution == 'RedHat'
-  shell: subscription-manager repos --enable {{ rhn_repositories_enabled | join(" --enable ") }}
-
-
 - name: Unsubscribe to RHN channels!
   when: rhn_repositories_disabled is defined and ansible_distribution == 'RedHat'
   shell: subscription-manager repos --disable {{ rhn_repositories_disabled | join(" --disable ") }}
   ignore_errors: True
+
+- name: Subscribe to RHN channels!
+  when: rhn_repositories_enabled is defined and ansible_distribution == 'RedHat'
+  shell: subscription-manager repos --enable {{ rhn_repositories_enabled | join(" --enable ") }}

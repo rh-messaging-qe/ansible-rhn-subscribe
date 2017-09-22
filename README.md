@@ -14,7 +14,7 @@ Role Variables
 | Name              | Default Value       | Description          |
 |-------------------|---------------------|----------------------|
 | `rhn_repositories_enabled` | NULL | A list of repositories to enable |
-| `rhn_repositories_disabled` | NULL | A list of repositories to enable |
+| `rhn_repositories_disabled` | NULL | A list of repositories to enable (use * to disable all) |
 
 
 
