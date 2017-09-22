@@ -15,8 +15,13 @@ Role Variables
 |-------------------|---------------------|----------------------|
 | `rhn_repositories_enabled` | NULL | A list of repositories to enable |
 | `rhn_repositories_disabled` | NULL | A list of repositories to enable (use * to disable all) |
+| `rhn_skip_rhn_repos_disable` | false | Skip disabling repositories |
+| `rhn_skip_rhn_repos_enable` | false | Skip disabling repositories |
 
 
+**Note**: the purpose of the *skip* variables is to forcefully prevent multiple
+invocations of the subscription commands when this role is used as a dependency
+of others.
 
 Dependencies
 ------------

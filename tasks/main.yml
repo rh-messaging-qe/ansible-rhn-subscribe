@@ -17,11 +17,21 @@
   include_vars:
     file: vars/repositories_rhel_{{ ansible_distribution_major_version }}_{{ ansible_architecture }}.yml
 
-- name: Unsubscribe to RHN channels!
-  when: rhn_repositories_disabled is defined and ansible_distribution == 'RedHat'
+- debug:
+    msg: "Disable Red Hat repositories variable: {{ rhn_skip_rhn_repos_disable }}"
+
+- debug:
+    msg: "Enable Red Hat repositories variable: {{ rhn_skip_rhn_repos_enable }}"
+
+- name: Disable Red Hat repositories
+  when:
+    - (rhn_repositories_disabled is defined and ansible_distribution == 'RedHat')
+    - (rhn_skip_rhn_repos_disable is defined and rhn_skip_rhn_repos_disable == false)
   shell: subscription-manager repos --disable {{ rhn_repositories_disabled | join(" --disable ") }}
   ignore_errors: True
 
-- name: Subscribe to RHN channels!
-  when: rhn_repositories_enabled is defined and ansible_distribution == 'RedHat'
+- name: Enable Red Hat repositories
+  when:
+    - (rhn_repositories_enabled is defined and ansible_distribution == 'RedHat')
+    - (rhn_skip_rhn_repos_enable is defined and rhn_skip_rhn_repos_enable == false)
   shell: subscription-manager repos --enable {{ rhn_repositories_enabled | join(" --enable ") }}

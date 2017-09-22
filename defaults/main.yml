@@ -13,3 +13,5 @@
 # limitations under the License.
 ---
 # defaults file for rhn-subscribe
+rhn_skip_rhn_repos_disable: false
+rhn_skip_rhn_repos_enable: false
