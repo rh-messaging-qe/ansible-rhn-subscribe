@@ -24,6 +24,10 @@
     msg: "Enable Red Hat repositories variable: {{ rhn_skip_rhn_repos_enable }}"
 
 - name: Disable Red Hat repositories
+  tags:
+    - rhn
+    - repository
+    - disable
   when:
     - (rhn_repositories_disabled is defined and ansible_distribution == 'RedHat')
     - (rhn_skip_rhn_repos_disable is defined and rhn_skip_rhn_repos_disable == false)
@@ -31,6 +35,10 @@
   ignore_errors: True
 
 - name: Enable Red Hat repositories
+  tags:
+    - rhn
+    - repository
+    - enable
   when:
     - (rhn_repositories_enabled is defined and ansible_distribution == 'RedHat')
     - (rhn_skip_rhn_repos_enable is defined and rhn_skip_rhn_repos_enable == false)
